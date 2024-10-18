@@ -2,12 +2,12 @@
 
 const getUsers = () => fetch("https://jsonplaceholder.typicode.com/users");
 
-const onSuccess = (data) => {
-    const name = data.map((user) => user.name)
-    console.log(name);}
+const onSuccess = async(data) => {
+    const response = await data.json();
+    const name = response.map((user) => user.name);
+    console.log(name);
+}
 
-const handleResponse = (Response) => Response.json();
-
-getUsers().then(handleResponse).then(onSuccess)
+getUsers().then(onSuccess)
 
 
